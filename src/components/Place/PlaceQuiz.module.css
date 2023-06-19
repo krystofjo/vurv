@@ -1,0 +1,29 @@
+.player {
+  margin: 0px;
+  appearance: none;
+  padding: 0px 14px;
+}
+
+.players {
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.selectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}

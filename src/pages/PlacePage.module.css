@@ -1,0 +1,111 @@
+.layout {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  flex-grow: 0;
+}
+
+.left {
+  width: 18vw;
+}
+
+.right {
+  width: 18vw;
+}
+
+.btn {
+  position: relative;
+  top: 6vh;
+  display: flex;
+  justify-content: center;
+  }
+
+.title {
+  width: calc(64vw);
+  padding-top: 6vh;
+  padding-bottom: 1vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.centermain {
+  width: calc(100vw / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  width: calc(100vw / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 8%;
+}
+
+.contentQA {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rightmain {
+  width: calc(100vw / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.leftmain {
+  width: calc(100vw / 3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.perex {
+  text-align: center;
+  width: 70%;
+}
+
+ .menu {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  position: absolute;
+  width: 100vw;
+  bottom: 0px;
+  z-index: 50;
+}
+
+.cornerImage {
+  width:100%;
+  aspect-ratio: 1 / 1;
+  bottom: 0px;
+}

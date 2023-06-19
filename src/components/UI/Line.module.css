@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 10px 0px;
+  width: 100%;
+}
+
+.line {
+  height: 6px;
+  width: 90%;
+  border-radius: 4px;
+}
+
+.color {
+  background-color: rgb(255, 0, 234);
+}

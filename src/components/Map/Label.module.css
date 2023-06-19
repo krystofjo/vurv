@@ -1,0 +1,28 @@
+.button {
+  border-radius:0.5vw;
+  /* border-radius:6px; */
+  border-style: none;
+  padding: 0.8vw;
+  /* padding: 10px; */
+  background-color: white;
+}
+
+.text {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.fill {
+  width: calc(100% - 12px);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.label:active {
+  transform: scale(0.95);
+}
