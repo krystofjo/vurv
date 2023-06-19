@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vurv/static/css/main.84479b35.css",
+    "main.js": "/vurv/static/js/main.92f83ab7.js",
+    "index.html": "/vurv/index.html",
+    "main.84479b35.css.map": "/vurv/static/css/main.84479b35.css.map",
+    "main.92f83ab7.js.map": "/vurv/static/js/main.92f83ab7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84479b35.css",
+    "static/js/main.92f83ab7.js"
+  ]
+}
