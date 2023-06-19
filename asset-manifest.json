@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/vurv/static/css/main.84479b35.css",
-    "main.js": "/vurv/static/js/main.92f83ab7.js",
+    "main.js": "/vurv/static/js/main.948ad67a.js",
     "index.html": "/vurv/index.html",
     "main.84479b35.css.map": "/vurv/static/css/main.84479b35.css.map",
-    "main.92f83ab7.js.map": "/vurv/static/js/main.92f83ab7.js.map"
+    "main.948ad67a.js.map": "/vurv/static/js/main.948ad67a.js.map"
   },
   "entrypoints": [
     "static/css/main.84479b35.css",
-    "static/js/main.92f83ab7.js"
+    "static/js/main.948ad67a.js"
   ]
 }
