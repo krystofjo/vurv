@@ -18,9 +18,6 @@ export default function GetReady() {
   }, [playersReady]);
 
   const { color, data, questions, setCurrQuestion, gameState, setGameState, setScore, playersNum } = useContext(QuizContext);
-  
-  const ready_url = data.quiz.data.attributes.getReady.data.attributes.url
-
 
   const startQuiz = () => {
     setScore({
@@ -57,7 +54,6 @@ export default function GetReady() {
         </div>
       </div>
       <div className={classes.main}>
-        {/* <img src={img_url} width='400px' height='400px'></img> */}
       </div>
       <div className={classes.panel}>
         <Stations playersNum={playersNum} playersReady={onPlayerConfirm}/>

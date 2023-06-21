@@ -13,6 +13,9 @@ export default function PlayerStation(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
+  console.log("PS_data",data);
+  console.log("PS_data_quiz",data.quiz);
+
   const ready_url = data.quiz.data.attributes.getReady.data.attributes.url
   const char_url = data.quiz.data.attributes.characters.data[playerId-1].attributes.url
   const char_anim_url = data.quiz.data.attributes.characters_anim.data[playerId-1].attributes.url

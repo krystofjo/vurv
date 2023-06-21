@@ -12,7 +12,7 @@ export default function BackToMapButton(props) {
   const lighten = color.concat('33')
 
   const onClickHandler = () => {
-    navigate('/')
+    navigate('/vurv/')
   }
 
   return (

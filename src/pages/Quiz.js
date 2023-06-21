@@ -16,100 +16,100 @@ import { useQuery, gql } from "@apollo/client";
 import Stations from '../components/Quiz/Stations';
 import QuitButton from '../components/UI/QuitButton';
 
-const QUESTIONS = gql`
-  query GetQuestions($id: ID!) {
-    place(id: $id) {
-      data {
-        id
-        attributes {
-          illus_quiz {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          abc_questions {
-            data {
-              id
-              attributes {
-                question,
-                option_A,
-                option_B,
-                option_C,
-                answer,
-                type,
-                explanation
-              }
-            }
-          }
-          pic_questions {
-            data {
-              id
-              attributes {
-                question,
-                option_A,
-                option_B,
-                option_C,
-                answer,
-                type,
-                explanation,
-                picture {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-          num_questions {
-            data {
-              id
-              attributes {
-                question,
-                answer,
-                type,
-                explanation
-              }
-            }
-          }
-        }
-      }
-    }
-    quiz {
-      data {
-        id
-        attributes {
-          getReady {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          characters {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          characters_anim {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const QUESTIONS = gql`
+//   query GetQuestions($id: ID!) {
+//     place(id: $id) {
+//       data {
+//         id
+//         attributes {
+//           illus_quiz {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           abc_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 option_A,
+//                 option_B,
+//                 option_C,
+//                 answer,
+//                 type,
+//                 explanation
+//               }
+//             }
+//           }
+//           pic_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 option_A,
+//                 option_B,
+//                 option_C,
+//                 answer,
+//                 type,
+//                 explanation,
+//                 picture {
+//                   data {
+//                     attributes {
+//                       url
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           num_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 answer,
+//                 type,
+//                 explanation
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     quiz {
+//       data {
+//         id
+//         attributes {
+//           getReady {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           characters {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           characters_anim {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default function Quiz(props) {
   const { id, players } = useParams();
@@ -144,20 +144,22 @@ export default function Quiz(props) {
   const [answers, setAnswers] = useState('')
   const [answerCorrectness, setAnswerCorrectness] = useState('')
 
-  const { loading, error, data } = useQuery(QUESTIONS, {
-    variables: { id: id },
-  });
+  // const { loading, error, data } = useQuery(QUESTIONS, {
+  //   variables: { id: id },
+  // });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error</p>;
 
-  let abc_questions = data.place.data.attributes.abc_questions.data;
-  let num_questions = data.place.data.attributes.num_questions.data;
-  let pic_questions = data.place.data.attributes.pic_questions.data;
+  const data = props.data;
+  const place = data.places.data.find(place => place.id===id);
+  const ats = place.attributes;
 
+  let abc_questions = ats.abc_questions.data;
+  let num_questions = ats.num_questions.data;
+  let pic_questions = ats.pic_questions.data;
 
-  // const root_url = 'http://localhost:1337'
-  const ilus_quiz_url = data.place.data.attributes.illus_quiz.data.attributes.url;
+  const illus_quiz_url = ats.illus_quiz.data.attributes.url;
 
  // // let pic_url = data.place.data.attributes.pic_questions.data[0].attributes.picture.data.attributes.url;
  // // const ready_url = data.quiz.data.attributes.getReady.data.attributes.url
@@ -176,14 +178,14 @@ export default function Quiz(props) {
   }
 
   const backToPlaceHandler = () => {
-    navigate(`/place/${id}`)
+    navigate(`/vurv/place/${id}`)
   }
 
   return (
     <QuizContext.Provider value={{color, data, questions, gameState, setGameState, answers, setAnswers, answerCorrectness, setAnswerCorrectness, score, setScore, playersNum, currQuestion, setCurrQuestion}}>
       <div className={classes.layout} style={{backgroundColor: color.concat('33')}}>
         <div className={classes.left}>
-          <img className={classes.cornerIllus} src={ilus_quiz_url}></img>
+          <img className={classes.cornerIllus} src={illus_quiz_url}></img>
         </div>
         <div className={classes.right}>
           <div className={classes.btn}>

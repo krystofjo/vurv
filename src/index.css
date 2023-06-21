@@ -126,3 +126,7 @@ p {
   line-height: 1.2vw;
   margin: 0px;
 }
+
+.shadow {
+  box-shadow: 0px 1vw 1vw rgba(255, 0, 0, 0.5);
+}

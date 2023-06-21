@@ -8,69 +8,70 @@ import PlaceQA from "../components/Place/PlaceQA";
 import PlaceQuiz from "../components/Place/PlaceQuiz";
 import classes from "./PlacePage.module.css";
 
-const PLACE = gql`
-  query GetPlace($id: ID!) {
-    place(id: $id) {
-      data {
-        id
-        attributes {
-          title
-          perex
-          about
-          fact_1Q
-          fact_1A
-          fact_2Q
-          fact_2A
-          fact_3Q
-          fact_3A
-          hex_color
-          quiz_intro
-          illus_main {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          illus_left {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          illus_right {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const PLACE = gql`
+//   query GetPlace($id: ID!) {
+//     place(id: $id) {
+//       data {
+//         id
+//         attributes {
+//           title
+//           perex
+//           about
+//           fact_1Q
+//           fact_1A
+//           fact_2Q
+//           fact_2A
+//           fact_3Q
+//           fact_3A
+//           hex_color
+//           quiz_intro
+//           illus_main {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           illus_left {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           illus_right {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
-export default function PlacePage() {
+export default function PlacePage(props) {
   const { id } = useParams();
   const [displayed, setDisplayed] = useState("main");
 
   console.log(id)
 
-  const { loading, error, data } = useQuery(PLACE, {
-    variables: { id: id },
-  });
+  // const { loading, error, data } = useQuery(PLACE, {
+  //   variables: { id: id },
+  // });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <h1>Error</h1>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <h1>Error</h1>;
 
-  const root_url = "http://localhost:1337";
+  const data = props.data;
+  const place = data.places.data.find(place => place.id===id);
 
-  const ats = data.place.data.attributes;
+  const ats = place.attributes;
   const title = ats.title;
   const perex = ats.perex;
   const about = ats.about;
@@ -100,13 +101,11 @@ export default function PlacePage() {
           )}
           {displayed == "facts" && (
             <div className={classes.title}>
-              {/* <h5 style={{color: lighten}}>{title}</h5> */}
               <h1 style={{color: color}}>Věděli jste, že?</h1>
             </div>
           )}
           {displayed == "quiz" && (
             <div className={classes.title}>
-              {/* <h5 style={{color: lighten}}>{title}</h5> */}
               <h1 style={{color: color}}>Quiz</h1>
               <h3 className={classes.perex}>{quiz_intro}</h3>
             </div>

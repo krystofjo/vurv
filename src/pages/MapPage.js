@@ -7,59 +7,62 @@ import { useNavigate } from "react-router-dom";
 import Label from "../components/Map/Label";
 import classes from "./MapPage.module.css";
 
-const MAP = gql`
-  query GetMapData {
-    places {
-      data {
-        id
-        attributes {
-          title
-          hex_color
-          map_position_top
-          map_position_left
-          show
-        }
-      }
-    }
-    general {
-      data {
-        id
-        attributes {
-          url
-          map {
-            data {
-              id
-              attributes {
-                formats
-                url
-              }
-            }
-          }
-          clouds {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const MAP = gql`
+//   query GetMapData {
+//     places {
+//       data {
+//         id
+//         attributes {
+//           title
+//           hex_color
+//           map_position_top
+//           map_position_left
+//           show
+//         }
+//       }
+//     }
+//     general {
+//       data {
+//         id
+//         attributes {
+//           url
+//           map {
+//             data {
+//               id
+//               attributes {
+//                 formats
+//                 url
+//               }
+//             }
+//           }
+//           clouds {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
-export default function MapPage() {
+export default function MapPage(props) {
   const navigate = useNavigate();
 
-  const { loading, error, data } = useQuery(MAP);
+  console.log("ADAM")
+  console.log(props)
+
+  // const { loading, error, data } = useQuery(MAP);
   const [modalShown, setModalShown] = useState(false);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error</p>;
 
-  //TODO: CHANGE ROOT
-  // const root_url = "http://localhost:1337";
+  const data = props.data;
+  const places = data.places.data;
   const url = data.general.data.attributes.url;
   const img_url = data.general.data.attributes.map.data.attributes.url;
 
@@ -81,7 +84,7 @@ export default function MapPage() {
   };
 
   const onClickHandler = (id) => {
-    navigate(`/place/${id}`);
+    navigate(`/vurv/place/${id}`);
   };
 
   return (
@@ -98,7 +101,7 @@ export default function MapPage() {
       )}
       <div className={classes.container}>
         <div className={classes.labels}>
-          {data.places.data.map((place) => (
+          {places.map((place) => (
             <Fragment key={place.id}>
             {place.attributes.show && 
               <div
