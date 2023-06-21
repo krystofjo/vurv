@@ -5,7 +5,6 @@ import './index.css';
 import App from './App';
 
 const client = new ApolloClient({
-  // uri: "http://localhost:1337/graphql",
   uri: "https://vurv-app.onrender.com/graphql",
   cache: new InMemoryCache(),
 });

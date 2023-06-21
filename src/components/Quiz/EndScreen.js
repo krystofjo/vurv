@@ -17,7 +17,7 @@ export default function EndScreen() {
   }
 
   const quitQuiz = () => {
-    navigate("/vurv/")
+    navigate("/")
   }
 
   const data_anims = data.quiz.data.attributes.characters_anim.data

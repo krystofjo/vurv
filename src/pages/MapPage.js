@@ -7,59 +7,10 @@ import { useNavigate } from "react-router-dom";
 import Label from "../components/Map/Label";
 import classes from "./MapPage.module.css";
 
-// const MAP = gql`
-//   query GetMapData {
-//     places {
-//       data {
-//         id
-//         attributes {
-//           title
-//           hex_color
-//           map_position_top
-//           map_position_left
-//           show
-//         }
-//       }
-//     }
-//     general {
-//       data {
-//         id
-//         attributes {
-//           url
-//           map {
-//             data {
-//               id
-//               attributes {
-//                 formats
-//                 url
-//               }
-//             }
-//           }
-//           clouds {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export default function MapPage(props) {
   const navigate = useNavigate();
 
-  console.log("ADAM")
-  console.log(props)
-
-  // const { loading, error, data } = useQuery(MAP);
   const [modalShown, setModalShown] = useState(false);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error</p>;
 
   const data = props.data;
   const places = data.places.data;
@@ -84,7 +35,7 @@ export default function MapPage(props) {
   };
 
   const onClickHandler = (id) => {
-    navigate(`/vurv/place/${id}`);
+    navigate(`/place/${id}`);
   };
 
   return (

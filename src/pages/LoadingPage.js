@@ -1,9 +1,10 @@
 import React from 'react'
+import classes from './LoadingPage.module.css'
 
 export default function LoadingPage() {
   return (
-    <div>
-      <h1>LOADING</h1>
+    <div className={classes.center}>
+      <h3>LOADING...</h3>
     </div>
   )
 }

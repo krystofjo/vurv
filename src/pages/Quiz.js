@@ -16,101 +16,6 @@ import { useQuery, gql } from "@apollo/client";
 import Stations from '../components/Quiz/Stations';
 import QuitButton from '../components/UI/QuitButton';
 
-// const QUESTIONS = gql`
-//   query GetQuestions($id: ID!) {
-//     place(id: $id) {
-//       data {
-//         id
-//         attributes {
-//           illus_quiz {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//           abc_questions {
-//             data {
-//               id
-//               attributes {
-//                 question,
-//                 option_A,
-//                 option_B,
-//                 option_C,
-//                 answer,
-//                 type,
-//                 explanation
-//               }
-//             }
-//           }
-//           pic_questions {
-//             data {
-//               id
-//               attributes {
-//                 question,
-//                 option_A,
-//                 option_B,
-//                 option_C,
-//                 answer,
-//                 type,
-//                 explanation,
-//                 picture {
-//                   data {
-//                     attributes {
-//                       url
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//           num_questions {
-//             data {
-//               id
-//               attributes {
-//                 question,
-//                 answer,
-//                 type,
-//                 explanation
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//     quiz {
-//       data {
-//         id
-//         attributes {
-//           getReady {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//           characters {
-//             data {
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//           characters_anim {
-//             data {
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export default function Quiz(props) {
   const { id, players } = useParams();
   const navigate = useNavigate();
@@ -144,13 +49,6 @@ export default function Quiz(props) {
   const [answers, setAnswers] = useState('')
   const [answerCorrectness, setAnswerCorrectness] = useState('')
 
-  // const { loading, error, data } = useQuery(QUESTIONS, {
-  //   variables: { id: id },
-  // });
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error</p>;
-
   const data = props.data;
   const place = data.places.data.find(place => place.id===id);
   const ats = place.attributes;
@@ -160,10 +58,6 @@ export default function Quiz(props) {
   let pic_questions = ats.pic_questions.data;
 
   const illus_quiz_url = ats.illus_quiz.data.attributes.url;
-
- // // let pic_url = data.place.data.attributes.pic_questions.data[0].attributes.picture.data.attributes.url;
- // // const ready_url = data.quiz.data.attributes.getReady.data.attributes.url
- // // const char_url = data.quiz.data.attributes.characters.data[0].attributes.url
 
   const questions = []
 
@@ -178,7 +72,7 @@ export default function Quiz(props) {
   }
 
   const backToPlaceHandler = () => {
-    navigate(`/vurv/place/${id}`)
+    navigate(`/place/${id}`)
   }
 
   return (
