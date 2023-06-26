@@ -6,7 +6,7 @@ import IconButton from './IconButton';
 import classes from './BackToMapButton.module.css';
 
 export default function QuitButton(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const color = props.color;
   const lighten = color.concat('33')

@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { useContext, Fragment } from 'react'
+import { AppContext } from '../../helpers/Context';
 import { useNavigate } from 'react-router-dom'
 import Button from './Button';
 import Icon from './Icon.jsx';
@@ -6,13 +7,17 @@ import IconButton from './IconButton';
 import classes from './BackToMapButton.module.css';
 
 export default function BackToMapButton(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const { setAppState } = useContext(AppContext);
 
   const color = props.color;
   const lighten = color.concat('33')
 
+
+
   const onClickHandler = () => {
-    navigate('/')
+    // navigate('/')
+    setAppState('map')
   }
 
   return (

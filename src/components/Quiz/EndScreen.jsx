@@ -1,5 +1,5 @@
 import React, {Fragment, useContext} from 'react'
-import { QuizContext } from '../../helpers/Context'
+import { AppContext, QuizContext } from '../../helpers/Context'
 import Button from '../UI/Button'
 import { useNavigate } from "react-router-dom";
 import classes from './Quiz.module.css';
@@ -7,8 +7,9 @@ import { root_url } from '../../helpers/root';
 
 export default function EndScreen() {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
+  const {setAppState} = useContext(AppContext)
   const {color, data, score, setScore, setGameState} = useContext(QuizContext)
 
   const restartQuiz = () => {
@@ -17,7 +18,9 @@ export default function EndScreen() {
   }
 
   const quitQuiz = () => {
-    navigate("/")
+    // navigate("/")
+    setAppState('place')
+
   }
 
   const data_anims = data.quiz.data.attributes.characters_anim.data

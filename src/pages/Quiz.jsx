@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { AppContext } from '../helpers/Context';
 import { useParams, useNavigate } from "react-router-dom";
 import GetReady from '../components/Quiz/GetReady'
-import QuestionState2 from '../components/Quiz/QuestionState2'
-import AnswerRecap2 from '../components/Quiz/AnswerRecap2';
+import QuestionState from '../components/Quiz/QuestionState'
+import AnswerRecap from '../components/Quiz/AnswerRecap';
 import EndScreen from '../components/Quiz/EndScreen'
 import { QuizContext } from '../helpers/Context'
 import Button from '../components/UI/Button';
@@ -11,8 +12,11 @@ import QuitButton from '../components/UI/QuitButton';
 import { root_url } from '../helpers/root';
 
 export default function Quiz(props) {
-  const { id, players } = useParams();
-  const navigate = useNavigate();
+  // const { id, players } = useParams();
+  // const navigate = useNavigate();
+
+  const { placeId, setPlaceId, playersNum, setAppState } = useContext(AppContext);
+
 
   const primary_colors = [
     "#AA6671",
@@ -33,18 +37,18 @@ export default function Quiz(props) {
     "#E38800",
   ]
 
-  const color = primary_colors[id-1];
+  const color = primary_colors[placeId-1];
   const lighten = color.concat('33')
 
   const [gameState, setGameState] = useState("getReady")
   const [score, setScore] = useState(0)
-  const [playersNum, setPlayersNum] = useState(players)
+  // const [playersNum, setPlayersNum] = useState(players)
   const [currQuestion, setCurrQuestion] = useState('');
   const [answers, setAnswers] = useState('')
   const [answerCorrectness, setAnswerCorrectness] = useState('')
 
   const data = props.data;
-  const place = data.places.data.find(place => place.id===id);
+  const place = data.places.data.find(place => place.id===placeId);
   const ats = place.attributes;
 
   let abc_questions = ats.abc_questions.data;
@@ -66,7 +70,8 @@ export default function Quiz(props) {
   }
 
   const backToPlaceHandler = () => {
-    navigate(`/place/${id}`)
+    // navigate(`/place/${id}`)
+    setAppState('place');
   }
 
   return (
@@ -81,10 +86,8 @@ export default function Quiz(props) {
           </div>
         </div>
         {gameState === "getReady" && <GetReady/>}
-        {/* {gameState === "questionState" && <QuestionState/>} */}
-        {gameState === "questionState" && <QuestionState2/>}
-        {/* {gameState === "answerRecap" && <AnswerRecap/>} */}
-        {gameState === "answerRecap" && <AnswerRecap2/>}
+        {gameState === "questionState" && <QuestionState/>}
+        {gameState === "answerRecap" && <AnswerRecap/>}
         {gameState === "endScreen" && <EndScreen/>}
       </div>
     </QuizContext.Provider>

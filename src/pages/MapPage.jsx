@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
+import { AppContext } from "../helpers/Context";
 import PlaceIcon from "../components/Place/PlaceIcon";
 import Button from "../components/UI/Button";
 import Modal from "../components/UI/Modal";
@@ -9,7 +10,7 @@ import classes from "./MapPage.module.css";
 import { root_url } from "../helpers/root";
 
 export default function MapPage(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [modalShown, setModalShown] = useState(false);
 
@@ -18,7 +19,7 @@ export default function MapPage(props) {
   const url = data.general.data.attributes.url;
 
   const img_url = root_url.concat(data.general.data.attributes.map.data.attributes.url);
-
+  
   const cloud1_url = root_url.concat(data.general.data.attributes.clouds.data[0].attributes.url);
   const cloud2_url = root_url.concat(data.general.data.attributes.clouds.data[1].attributes.url);
   const cloud3_url = root_url.concat(data.general.data.attributes.clouds.data[2].attributes.url);
@@ -36,8 +37,12 @@ export default function MapPage(props) {
     setModalShown(false);
   };
 
+    const { setAppState, setPlaceId } = useContext(AppContext);
+
   const onClickHandler = (id) => {
-    navigate(`/place/${id}`);
+    // navigate(`/place/${id}`);
+    setPlaceId(id)
+    setAppState('place')
   };
 
   return (

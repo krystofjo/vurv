@@ -4,14 +4,13 @@ import Button from '../UI/Button';
 import Stations from './Stations'
 import classes from './Quiz.module.css';
 import Card from '../UI/Card';
+import { root_url } from '../../helpers/root';
 
 export default function QuestionState() {
 
-  console.log("QUESTION 1")
-
+  console.log("QUESTION 2")
 
   const { color, questions, score, setScore, setGameState, answers, setAnswers, setAnswerCorrectness, currQuestion, setCurrQuestion, playersNum } = useContext(QuizContext)
-  const [isTurning, setIsTurning] = useState(false);
   const [optionChosen, setOptionChosen] = useState({
     answered: 0,
     player_1: "",
@@ -24,8 +23,8 @@ export default function QuestionState() {
   let pic_url = ''
 
   if(currQuestion.type == 'picture') {
-    pic_url = questions[currQuestion.rank].picture.data.attributes.url
-    console.log(pic_url);
+    pic_url = root_url.concat(questions[currQuestion.rank].picture_question.data.attributes.url);
+    console.log("PIC_QUESTION", pic_url);
   }
 
 
@@ -77,11 +76,7 @@ export default function QuestionState() {
   }
 
   const answerRecap = () => {
-    setIsTurning(true)
-    setTimeout(() => {
-      setGameState('answerRecap')
-    }, '500');
-    
+      setGameState('answerRecap')    
   }
 
   return (
@@ -94,7 +89,7 @@ export default function QuestionState() {
           <h2>{questions[currQuestion.rank].question}</h2>
         </div>
       </div>
-      <div className={`${classes.main} ${isTurning && classes.hiding}`}>
+      <div className={`${classes.main}`}>
         {currQuestion.type === 'ABC' &&
           <div className={classes.card} style={{color: color}}>
             <div className={classes.option}>{`A) ${questions[currQuestion.rank].option_A}`}</div>
@@ -102,12 +97,12 @@ export default function QuestionState() {
             <div className={classes.option}>{`C) ${questions[currQuestion.rank].option_C}`}</div>
           </div>
         }
-        {currQuestion.type === 'numeric' &&
+        {currQuestion.type === 'num' &&
           <div className={classes.card} style={{color: color}}>
             <h2>?</h2>
           </div>
         }
-        {(currQuestion.type === 'picture' && pic_url!='') &&
+        {(currQuestion.type === 'pic' && pic_url!='') &&
           <div className={classes.card}>
             <img className={classes.questionImage} src={pic_url}></img>
           </div>

@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import MapPage from "./pages/MapPage";
 import PlacePage from "./pages/PlacePage";
 import Quiz from "./pages/Quiz";
+import { AppContext } from './helpers/Context'
 import LoadingPage from "./pages/LoadingPage";
 
 const DATA = gql`
@@ -164,25 +166,35 @@ query GetData {
 }
 `;
 
-
 function App() {
 
-  const { loading, error, data } = useQuery(DATA);
+  const [appState, setAppState] = useState('map')
+  const [placeId, setPlaceId] = useState('2')
+  const [playersNum, setPlayersNum] = useState('1')
+
+  const { loading, error, data } = useQuery(DATA)
 
   if (loading) return <LoadingPage/>;
   if (error) return <p>Error</p>;
 
   return (
-    <Router>
-        <div className="App">
-          <Routes>
-            <Route exact path="" element={<MapPage data={data}/>} />
-            <Route exact path="/place/:id" element={<PlacePage data={data}/>} />
-            <Route exact path="/place/:id/:players" element={<Quiz data={data}/>} />
-            <Route exact path="/quiz/:" element={<Quiz playerNum={5} data={data}/>} />
-          </Routes>
-        </div>
-    </Router>
+    // <Router>
+    <AppContext.Provider value={{appState, setAppState, placeId, setPlaceId, playersNum, setPlayersNum}}>
+      {appState === 'map' && <MapPage data={data}/>}
+      {appState === 'place' && <PlacePage data={data} id={placeId}/>}
+      {appState === 'quiz' && <Quiz data={data} players={playersNum}/>}
+    </AppContext.Provider>
+    // </Router>
+    // <Router>
+    //     <div className="App">
+    //       <Routes>
+    //         <Route exact path="" element={<MapPage data={data}/>} />
+    //         <Route exact path="/place/:id" element={<PlacePage data={data}/>} />
+    //         <Route exact path="/place/:id/:players" element={<Quiz data={data}/>} />
+    //         <Route exact path="/quiz/:" element={<Quiz playerNum={5} data={data}/>} />
+    //       </Routes>
+    //     </div>
+    // </Router>
   );
 }
 

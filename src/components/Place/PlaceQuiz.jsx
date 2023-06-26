@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
+import { AppContext } from "../../helpers/Context";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
@@ -7,14 +8,14 @@ import classes from "./PlaceQuiz.module.css";
 import { concat } from "@apollo/client";
 
 export default function PlaceQuiz(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const color = props.color;
   const lighetened = color.concat("33");
 
   const [players, setPlayers] = useState("1");
   const [playersSelected, setPlayersSelected] = useState(true);
 
-  console.log(playersSelected);
+  const { setAppState, setPlaceId, setPlayersNum } = useContext(AppContext);
 
   let chooseNumOfPlayers = [];
 
@@ -56,7 +57,9 @@ export default function PlaceQuiz(props) {
   }
 
   const clickHandler = () => {
-    navigate(players);
+    // navigate(players);
+    setPlayersNum(players);
+    setAppState('quiz')
   };
 
   return (

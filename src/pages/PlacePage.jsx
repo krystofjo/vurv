@@ -10,7 +10,10 @@ import classes from "./PlacePage.module.css";
 import { root_url } from "../helpers/root";
 
 export default function PlacePage(props) {
-  const { id } = useParams();
+
+  const id = props.id;
+
+  // const { id } = useParams();
   const [displayed, setDisplayed] = useState("main");
 
   const data = props.data;

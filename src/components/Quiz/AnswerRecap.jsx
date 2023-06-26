@@ -2,6 +2,7 @@ import React, { useState, useContext, Fragment, useEffect } from 'react'
 import { QuizContext } from '../../helpers/Context';
 import Button from '../UI/Button';
 import classes from './Quiz.module.css';
+import flipclasses from './FlipCard.module.css';
 import Stations from './Stations';
 
 export default function AnswerRecap() {
@@ -9,7 +10,6 @@ export default function AnswerRecap() {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [explanation, setExplanation] = useState("");
   const [correctShown, setCorrectShown] = useState(false);
-  const [isTurning, setIsTurning] = useState(true);
 
   const nextQuestion = ()=>{
     setCurrQuestion(prevState => ({
@@ -45,15 +45,6 @@ export default function AnswerRecap() {
     setGameState('endScreen')
   }
 
-  setTimeout(() => {
-    // showCorrect()
-    stopTurning();
-  }, '500');
-
-  const stopTurning = ()=> {
-    setIsTurning(false);
-  }
-
   const isAnswersCorrect = answerCorrectness[currQuestion.rank]
 
   return (
@@ -66,25 +57,28 @@ export default function AnswerRecap() {
           <h2>{questions[currQuestion.rank].question}</h2>
         </div>
       </div>
-      <div className={`${classes.main} ${isTurning && classes.showing}`}>
-        {/* {correctShown && 
-        } */}
+      <div className={`${classes.main}`}>
         <Fragment>
           <div className={classes.card}>
             <h5 style={{color: color}}>Správná odpověď:</h5>
-            <h2 style={{color: color}}>{correctAnswer}</h2>
+            <div className={classes.option} style={{color: color}}>{correctAnswer}</div>
             <p>{explanation}</p>
           </div>
             {(currQuestion.rank != questions.length - 1) &&
-              <Button onClick={nextQuestion}>Další Otázka</Button>
+              <Button style={{backgroundColor: color, color: 'white'}} onClick={nextQuestion}>
+                <h5>
+                  Další Otázka
+                </h5>
+              </Button>
             }
             {(currQuestion.rank == questions.length - 1) &&
-              <Button onClick={finishQuiz}>Finish Quiz</Button>
+              <Button style={{backgroundColor: color, color: 'white'}} onClick={finishQuiz}>
+                <h5>
+                  Finish Quiz
+                </h5>
+              </Button>
             }
         </Fragment>
-        {/* {!correctShown && 
-          <div>Loading</div>
-        } */}
       </div>
       <div className={classes.panel}>
         <Stations playersNum={playersNum} isAnswersCorrect={isAnswersCorrect} correctShown={correctShown}/>

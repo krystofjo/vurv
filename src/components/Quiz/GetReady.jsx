@@ -1,23 +1,25 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { QuizContext } from "../../helpers/Context";
+import { AppContext, QuizContext } from "../../helpers/Context";
 import { useQuery, gql } from "@apollo/client";
 import Stations from "./Stations";
 import Button from "../UI/Button";
 import classes from "./Quiz.module.css";
 
 export default function GetReady() {
-  const { id, players } = useParams();
+  // const { id, players } = useParams();
+  const { placeId, setPlaceId, playersNum } = useContext(AppContext);
+
 
   const [playersReady, setPlayersReady] = useState({counter: 0});
 
   useEffect(() => {
-    if (playersReady.counter == players) {
+    if (playersReady.counter == playersNum) {
       startQuiz();
     }
   }, [playersReady]);
 
-  const { color, data, questions, setCurrQuestion, gameState, setGameState, setScore, playersNum } = useContext(QuizContext);
+  const { color, data, questions, setCurrQuestion, gameState, setGameState, setScore } = useContext(QuizContext);
 
   const startQuiz = () => {
     setScore({
