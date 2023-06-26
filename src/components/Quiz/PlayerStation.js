@@ -5,6 +5,7 @@ import Picture from './StationContent/Picture'
 import { QuizContext } from '../../helpers/Context'
 import Button from '../UI/Button'
 import classes from "./PlayerStation.module.css"
+import { root_url } from '../../helpers/root'
 
 export default function PlayerStation(props) {
   const { data, score, setScore, gameState, setGameState, playersNum, currQuestion } = useContext(QuizContext)
@@ -16,9 +17,10 @@ export default function PlayerStation(props) {
   console.log("PS_data",data);
   console.log("PS_data_quiz",data.quiz);
 
-  const ready_url = data.quiz.data.attributes.getReady.data.attributes.url
-  const char_url = data.quiz.data.attributes.characters.data[playerId-1].attributes.url
-  const char_anim_url = data.quiz.data.attributes.characters_anim.data[playerId-1].attributes.url
+  // const ready_url = data.quiz.data.attributes.get_ready.data.attributes.url
+
+  const char_url = root_url.concat(data.quiz.data.attributes.characters.data[playerId-1].attributes.url);
+  const char_anim_url = root_url.concat(data.quiz.data.attributes.characters_anim.data[playerId-1].attributes.url);
 
   const img_url = char_url;
   const anim_url = char_anim_url;
@@ -59,8 +61,8 @@ export default function PlayerStation(props) {
           {(!isSubmitted && gameState==="questionState") &&
             <Fragment>
               { currQuestion.type === "ABC" && <Abc color={props.color} playerId={playerId} setIsSubmitted={setIsSubmitted} setPlayerOption={props.setPlayerOption}/> }
-              { currQuestion.type === "numeric" && <Numeric color={props.color} playerId={playerId} setIsSubmitted={setIsSubmitted} setPlayerOption={props.setPlayerOption}/> }
-              { currQuestion.type === "picture" && <Picture color={props.color} playerId={playerId} setIsSubmitted={setIsSubmitted} setPlayerOption={props.setPlayerOption}/> }
+              { currQuestion.type === "num" && <Numeric color={props.color} playerId={playerId} setIsSubmitted={setIsSubmitted} setPlayerOption={props.setPlayerOption}/> }
+              { currQuestion.type === "pic" && <Picture color={props.color} playerId={playerId} setIsSubmitted={setIsSubmitted} setPlayerOption={props.setPlayerOption}/> }
             </Fragment>
           }
         </div>

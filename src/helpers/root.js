@@ -1,0 +1,1 @@
+export const root_url = 'https://vurv-admin.digitalove.cz/'

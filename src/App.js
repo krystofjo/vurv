@@ -5,65 +5,224 @@ import PlacePage from "./pages/PlacePage";
 import Quiz from "./pages/Quiz";
 import LoadingPage from "./pages/LoadingPage";
 
+// const DATA = gql`
+//   query GetMapData {
+//    places {
+//       data {
+//         id
+//         attributes {
+//           title
+//           perex
+//           about
+//           fact_1Q
+//           fact_1A
+//           fact_2Q
+//           fact_2A
+//           fact_3Q
+//           fact_3A
+//           hex_color
+//           quiz_intro
+//           hex_color
+//           map_position_top
+//           map_position_left
+//           show
+//           abc_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 option_A,
+//                 option_B,
+//                 option_C,
+//                 answer,
+//                 type,
+//                 explanation
+//               }
+//             }
+//           }
+//           num_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 answer,
+//                 type,
+//                 explanation
+//               }
+//             }
+//           }
+//           pic_questions {
+//             data {
+//               id
+//               attributes {
+//                 question,
+//                 option_A,
+//                 option_B,
+//                 option_C,
+//                 answer,
+//                 type,
+//                 explanation,
+//                 picture_question {
+//                   data {–
+//                     attributes {
+//                       url
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           illus_main {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           illus_left {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           illus_right {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           illus_quiz {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     general {
+//       data {
+//         id
+//         attributes {
+//           url
+//           map {
+//             data {
+//               id
+//               attributes {
+//                 formats
+//                 url
+//               }
+//             }
+//           }
+//           clouds {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     quiz {
+//       data {
+//         id
+//         attributes {
+//           getReady {
+//             data {
+//               id
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           characters {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//           characters_anim {
+//             data {
+//               attributes {
+//                 url
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
+
 const DATA = gql`
-  query GetMapData {
-   places {
-      data {
-        id
-        attributes {
-          title
-          perex
-          about
-          fact_1Q
-          fact_1A
-          fact_2Q
-          fact_2A
-          fact_3Q
-          fact_3A
-          hex_color
-          quiz_intro
-          hex_color
-          map_position_top
-          map_position_left
-          show
-          abc_questions {
-            data {
-              id
-              attributes {
-                question,
-                option_A,
-                option_B,
-                option_C,
-                answer,
-                type,
-                explanation
+query GetData {
+  places {
+    data {
+      id
+      attributes{
+        title
+        perex
+        about
+        fact_1Q
+        fact_1A
+        fact_2Q
+        fact_2A
+        fact_3Q
+        fact_3A
+        hex_color
+        quiz_intro
+        map_position_top
+        map_position_left
+        show
+        abc_questions{
+          data {
+            id
+            attributes{
+						  question
+              option_A
+              option_B
+              option_C
+              answer
+              type
+              explanation
+            }
+          }
+        }
+        num_questions {
+          data {
+            id
+            attributes {
+              question,
+               answer,
+               type,
+               explanation
               }
             }
           }
-          num_questions {
+        pic_questions {
             data {
               id
               attributes {
-                question,
-                answer,
-                type,
+                question
+                option_A
+                option_B
+                option_C
+                answer
+                type
                 explanation
-              }
-            }
-          }
-          pic_questions {
-            data {
-              id
-              attributes {
-                question,
-                option_A,
-                option_B,
-                option_C,
-                answer,
-                type,
-                explanation,
-                picture {
+                picture_question {
                   data {
+                    id
                     attributes {
                       url
                     }
@@ -71,8 +230,8 @@ const DATA = gql`
                 }
               }
             }
-          }
-          illus_main {
+        }
+        illus_main {
             data {
               id
               attributes {
@@ -104,10 +263,10 @@ const DATA = gql`
               }
             }
           }
-        }
       }
     }
-    general {
+  }
+  general {
       data {
         id
         attributes {
@@ -132,11 +291,11 @@ const DATA = gql`
         }
       }
     }
-    quiz {
+  quiz {
       data {
         id
         attributes {
-          getReady {
+          get_ready {
             data {
               id
               attributes {
@@ -161,8 +320,9 @@ const DATA = gql`
         }
       }
     }
-  }
+}
 `;
+
 
 function App() {
 
@@ -170,8 +330,6 @@ function App() {
 
   if (loading) return <LoadingPage/>;
   if (error) return <p>Error</p>;
-
-  console.log("question", data.places.data[1].attributes.num_questions)
 
   return (
     <Router>

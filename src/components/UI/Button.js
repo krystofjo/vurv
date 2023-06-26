@@ -12,7 +12,7 @@ const Button = (props) => {
       type={props.type || "button"}
       onClick={props.onClick}
     >
-      {props.children}
+        {props.children}
     </button>
   );
 };

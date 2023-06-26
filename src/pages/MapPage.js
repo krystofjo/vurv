@@ -6,6 +6,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import Label from "../components/Map/Label";
 import classes from "./MapPage.module.css";
+import { root_url } from "../helpers/root";
 
 export default function MapPage(props) {
   const navigate = useNavigate();
@@ -15,12 +16,13 @@ export default function MapPage(props) {
   const data = props.data;
   const places = data.places.data;
   const url = data.general.data.attributes.url;
-  const img_url = data.general.data.attributes.map.data.attributes.url;
 
-  const cloud1_url = data.general.data.attributes.clouds.data[0].attributes.url;
-  const cloud2_url = data.general.data.attributes.clouds.data[1].attributes.url;
-  const cloud3_url = data.general.data.attributes.clouds.data[2].attributes.url;
-  const cloud4_url = data.general.data.attributes.clouds.data[3].attributes.url;
+  const img_url = root_url.concat(data.general.data.attributes.map.data.attributes.url);
+
+  const cloud1_url = root_url.concat(data.general.data.attributes.clouds.data[0].attributes.url);
+  const cloud2_url = root_url.concat(data.general.data.attributes.clouds.data[1].attributes.url);
+  const cloud3_url = root_url.concat(data.general.data.attributes.clouds.data[2].attributes.url);
+  const cloud4_url = root_url.concat(data.general.data.attributes.clouds.data[3].attributes.url);
 
   const showModal = () => {
     setModalShown(true);
@@ -74,27 +76,17 @@ export default function MapPage(props) {
           ))}
         </div>
         <div className={classes.clouds}>
-          <img
-            className={classes.cloud1}
-            src={cloud1_url}
-          ></img>
-          <img
-            className={classes.cloud2}
-            src={cloud2_url}
-          ></img>
-          <img
-            className={classes.cloud3}
-            src={cloud3_url}
-          ></img>
-          <img
-            className={classes.cloud4}
-            src={cloud4_url}
-          ></img>
+          <img className={classes.cloud1} src={cloud1_url}/>
+          <img className={classes.cloud2} src={cloud2_url}/>
+          <img className={classes.cloud3} src={cloud3_url}/>
+          <img className={classes.cloud4} src={cloud4_url}/>
         </div>
-        <img className={classes.map} src={img_url}></img>
+        <img className={classes.map} src={img_url}/>
       </div>
       <Button className={classes.logoButton} onClick={showModal}>
-        VURV.cz
+        <h5>
+          VURV.cz
+        </h5>
       </Button>
       <div></div>
     </div>

@@ -7,66 +7,11 @@ import PlaceMenu from "../components/Place/PlaceMenu";
 import PlaceQA from "../components/Place/PlaceQA";
 import PlaceQuiz from "../components/Place/PlaceQuiz";
 import classes from "./PlacePage.module.css";
-
-// const PLACE = gql`
-//   query GetPlace($id: ID!) {
-//     place(id: $id) {
-//       data {
-//         id
-//         attributes {
-//           title
-//           perex
-//           about
-//           fact_1Q
-//           fact_1A
-//           fact_2Q
-//           fact_2A
-//           fact_3Q
-//           fact_3A
-//           hex_color
-//           quiz_intro
-//           illus_main {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//           illus_left {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//           illus_right {
-//             data {
-//               id
-//               attributes {
-//                 url
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+import { root_url } from "../helpers/root";
 
 export default function PlacePage(props) {
   const { id } = useParams();
   const [displayed, setDisplayed] = useState("main");
-
-  console.log(id)
-
-  // const { loading, error, data } = useQuery(PLACE, {
-  //   variables: { id: id },
-  // });
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <h1>Error</h1>;
 
   const data = props.data;
   const place = data.places.data.find(place => place.id===id);
@@ -76,9 +21,9 @@ export default function PlacePage(props) {
   const perex = ats.perex;
   const about = ats.about;
   const quiz_intro = ats.quiz_intro;
-  const img_main_url = ats.illus_main.data.attributes.url;
-  const img_left_url = ats.illus_left.data.attributes.url;
-  const img_right_url = ats.illus_right.data.attributes.url;
+  const img_main_url = root_url.concat(ats.illus_main.data.attributes.url);
+  const img_left_url = root_url.concat(ats.illus_left.data.attributes.url);
+  const img_right_url = root_url.concat(ats.illus_right.data.attributes.url);
   const facts_q = [ats.fact_1Q, ats.fact_2Q, ats.fact_3Q];
   const facts_a = [ats.fact_1A, ats.fact_2A, ats.fact_3A];
   

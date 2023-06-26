@@ -4,6 +4,7 @@ import { Questions } from '../../helpers/QuestionBank'
 import Button from '../UI/Button'
 import { useNavigate } from "react-router-dom";
 import classes from './Quiz.module.css';
+import { root_url } from '../../helpers/root';
 
 export default function EndScreen() {
 
@@ -25,7 +26,7 @@ export default function EndScreen() {
 
   for (let i = 0; i < data_anims.length; i++) {
     const char_anim_url = data_anims[i].attributes.url
-    const anim_url = char_anim_url;
+    const anim_url = root_url.concat(char_anim_url);
     anims.push(<img key={i} src={anim_url} width='20%'></img>)
   }
 

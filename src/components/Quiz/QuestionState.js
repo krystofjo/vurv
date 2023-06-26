@@ -7,6 +7,8 @@ import Card from '../UI/Card';
 
 export default function QuestionState() {
 
+  console.log("QUESTION 1")
+
 
   const { color, questions, score, setScore, setGameState, answers, setAnswers, setAnswerCorrectness, currQuestion, setCurrQuestion, playersNum } = useContext(QuizContext)
   const [isTurning, setIsTurning] = useState(false);

@@ -15,6 +15,7 @@ import classes from '../components/Quiz/Quiz.module.css'
 import { useQuery, gql } from "@apollo/client";
 import Stations from '../components/Quiz/Stations';
 import QuitButton from '../components/UI/QuitButton';
+import { root_url } from '../helpers/root';
 
 export default function Quiz(props) {
   const { id, players } = useParams();
@@ -57,7 +58,7 @@ export default function Quiz(props) {
   let num_questions = ats.num_questions.data;
   let pic_questions = ats.pic_questions.data;
 
-  const illus_quiz_url = ats.illus_quiz.data.attributes.url;
+  const illus_quiz_url = root_url.concat(ats.illus_quiz.data.attributes.url);
 
   const questions = []
 
