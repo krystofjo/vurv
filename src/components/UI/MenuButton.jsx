@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button';
-import Icon from './Icon';
+import Icon from './Icon.jsx';
 import classes from "./MenuButton.module.css"
 
 export default function MenuButton(props) {

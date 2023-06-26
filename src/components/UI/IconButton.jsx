@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button';
-import Icon from './Icon';
+import Icon from './Icon.jsx';
 import classes from "./IconButton.module.css"
 
 export default function IconButton(props) {

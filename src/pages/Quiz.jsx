@@ -1,19 +1,12 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 import GetReady from '../components/Quiz/GetReady'
-import QuestionState from '../components/Quiz/QuestionState'
 import QuestionState2 from '../components/Quiz/QuestionState2'
-import AnswerRecap from '../components/Quiz/AnswerRecap';
 import AnswerRecap2 from '../components/Quiz/AnswerRecap2';
 import EndScreen from '../components/Quiz/EndScreen'
-import QuitQuizButton from '../components/QuitQuizButton'
-import BackToMapButton from '../components/QuitQuizButton'
 import { QuizContext } from '../helpers/Context'
 import Button from '../components/UI/Button';
-import { Questions } from '../helpers/QuestionBank';
 import classes from '../components/Quiz/Quiz.module.css'
-import { useQuery, gql } from "@apollo/client";
-import Stations from '../components/Quiz/Stations';
 import QuitButton from '../components/UI/QuitButton';
 import { root_url } from '../helpers/root';
 

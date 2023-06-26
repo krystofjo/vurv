@@ -1,6 +1,5 @@
 import React, {Fragment, useContext} from 'react'
 import { QuizContext } from '../../helpers/Context'
-import { Questions } from '../../helpers/QuestionBank'
 import Button from '../UI/Button'
 import { useNavigate } from "react-router-dom";
 import classes from './Quiz.module.css';

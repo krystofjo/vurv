@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button';
-import Icon from './Icon';
+import Icon from './Icon.jsx';
 import IconButton from './IconButton';
 import classes from './BackToMapButton.module.css';
 

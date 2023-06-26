@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Icon from "./Icon";
+import Icon from "./Icon.jsx";
 import classes from  "./HideShowElement.module.css"
 
 export default function HideShowElement(props) {
