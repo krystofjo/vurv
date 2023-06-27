@@ -27,7 +27,6 @@ export default function Numeric(props) {
     setNumInput(prevState => (
       prevState + input))
     setInputValid(true)
-    console.log(numInput)
   }
 
   const deleteHandler = () => {
@@ -36,7 +35,6 @@ export default function Numeric(props) {
   }
 
   const onSubmitHandler = (event) => {
-    console.log(event)
     event.preventDefault();
     if(inputValid) {
       props.setPlayerOption(`player_${playerId}`, parseInt(numInput));

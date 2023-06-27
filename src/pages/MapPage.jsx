@@ -9,6 +9,11 @@ import Label from "../components/Map/Label";
 import classes from "./MapPage.module.css";
 import { root_url } from "../helpers/root";
 
+import cloud1 from '../data/cloud_1.png';
+import cloud2 from '../data/cloud_2.png';
+import cloud3 from '../data/cloud_3.png';
+import cloud4 from '../data/cloud_4.png';
+
 export default function MapPage(props) {
   // const navigate = useNavigate();
 
@@ -20,10 +25,10 @@ export default function MapPage(props) {
 
   const img_url = root_url.concat(data.general.data.attributes.map.data.attributes.url);
   
-  const cloud1_url = root_url.concat(data.general.data.attributes.clouds.data[0].attributes.url);
-  const cloud2_url = root_url.concat(data.general.data.attributes.clouds.data[1].attributes.url);
-  const cloud3_url = root_url.concat(data.general.data.attributes.clouds.data[2].attributes.url);
-  const cloud4_url = root_url.concat(data.general.data.attributes.clouds.data[3].attributes.url);
+  // const cloud1_url = root_url.concat(data.general.data.attributes.clouds.data[0].attributes.url);
+  // const cloud2_url = root_url.concat(data.general.data.attributes.clouds.data[1].attributes.url);
+  // const cloud3_url = root_url.concat(data.general.data.attributes.clouds.data[2].attributes.url);
+  // const cloud4_url = root_url.concat(data.general.data.attributes.clouds.data[3].attributes.url);
 
   const showModal = () => {
     setModalShown(true);
@@ -81,10 +86,10 @@ export default function MapPage(props) {
           ))}
         </div>
         <div className={classes.clouds}>
-          <img className={classes.cloud1} src={cloud1_url}/>
-          <img className={classes.cloud2} src={cloud2_url}/>
-          <img className={classes.cloud3} src={cloud3_url}/>
-          <img className={classes.cloud4} src={cloud4_url}/>
+          <img className={classes.cloud1} src={cloud1}/>
+          <img className={classes.cloud2} src={cloud2}/>
+          <img className={classes.cloud3} src={cloud3}/>
+          <img className={classes.cloud4} src={cloud4}/>
         </div>
         <img className={classes.map} src={img_url}/>
       </div>

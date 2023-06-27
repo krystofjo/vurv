@@ -2,7 +2,7 @@ import React, {Fragment, useContext} from 'react'
 import { AppContext, QuizContext } from '../../helpers/Context'
 import Button from '../UI/Button'
 import { useNavigate } from "react-router-dom";
-import classes from './Quiz.module.css';
+import classes from '../../pages/Quiz.module.css';
 import { root_url } from '../../helpers/root';
 
 export default function EndScreen() {

@@ -7,13 +7,11 @@ import AnswerRecap from '../components/Quiz/AnswerRecap';
 import EndScreen from '../components/Quiz/EndScreen'
 import { QuizContext } from '../helpers/Context'
 import Button from '../components/UI/Button';
-import classes from '../components/Quiz/Quiz.module.css'
+import classes from './Quiz.module.css'
 import QuitButton from '../components/UI/QuitButton';
 import { root_url } from '../helpers/root';
 
 export default function Quiz(props) {
-  // const { id, players } = useParams();
-  // const navigate = useNavigate();
 
   const { placeId, setPlaceId, playersNum, setAppState } = useContext(AppContext);
 
@@ -42,7 +40,6 @@ export default function Quiz(props) {
 
   const [gameState, setGameState] = useState("getReady")
   const [score, setScore] = useState(0)
-  // const [playersNum, setPlayersNum] = useState(players)
   const [currQuestion, setCurrQuestion] = useState('');
   const [answers, setAnswers] = useState('')
   const [answerCorrectness, setAnswerCorrectness] = useState('')
@@ -70,7 +67,6 @@ export default function Quiz(props) {
   }
 
   const backToPlaceHandler = () => {
-    // navigate(`/place/${id}`)
     setAppState('place');
   }
 

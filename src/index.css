@@ -76,10 +76,11 @@ h2 {
   /* font-family: 'Archivo Narrow';  */
   font-family: 'Archivo Narrow'; 
   font-weight: 700;
-  font-size: 5.8vw;
-  line-height: 5vw;
-  letter-spacing: -0.25rem;
+  font-size: 4.8vw;
+  line-height: 4.4vw;
+  letter-spacing: -0.15vw;
   margin: 0px;
+  text-wrap: balance;
 }
 
 h3 {
@@ -123,7 +124,7 @@ p {
   font-family: 'Archivo'; 
   font-weight: 400;
   font-size: 1.1vw;
-  line-height: 1.2vw;
+  line-height: 1.3vw;
   margin: 0px;
 }
 

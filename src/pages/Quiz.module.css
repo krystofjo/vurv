@@ -46,9 +46,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: perspective(500px);
-  transform-style: preserve-3d;
-
 }
 
  .header {
@@ -79,50 +76,44 @@
  }
 
 .card {
-  background: rgba(255, 255, 255, 0.8);
+  width: 60%;
+  height: 70%;
+  background: white;
+  /* background: orange; */
   border-radius: 0.4vw;
   box-shadow: 0px 0.1vw 0.1vw rgba(0, 0, 0, 0.25);
-  padding: 2.5vh 2.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 50vw;
 }
 
-@keyframes hiding {
-  from {
-  rotate: y 0deg;
-  }
-  to {
-  rotate: y 90deg;
-  }
-}
-@keyframes showing {
-  from {
-  rotate: y 90deg;
-  }
-  to {
-  rotate: y 0deg;
-  }
+.contentContainer {
+  /* background-color: yellow; */
+  width: 90%;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.hiding {
+.content {
+  /* background-color: aquamarine; */
+}
+
+.buttonContainer {
   /* background-color: red; */
-  animation: hiding 0.5s ease-in-out;
-
-}
-
-.showing {
-  /* background-color: blue; */
-  animation: showing 0.5s ease-in-out;
+  width: calc(90%);
+  padding: 2vh 0;
 }
 
 .option {
   font-family: 'Archivo';
   font-weight: 700;
-  font-size: 2vw;
-  line-height: 2.3vw;
+  font-size: 1.8vw;
+  line-height: 2.6vw;
+  letter-spacing: -0.075vw;
 }
 
 .stationsContainer {

@@ -6,6 +6,7 @@ import { QuizContext } from '../../helpers/Context'
 import Button from '../UI/Button'
 import classes from "./PlayerStation.module.css"
 import { root_url } from '../../helpers/root'
+import Card from '../UI/Card'
 
 export default function PlayerStation(props) {
   const { data, score, setScore, gameState, setGameState, playersNum, currQuestion } = useContext(QuizContext)
@@ -13,11 +14,6 @@ export default function PlayerStation(props) {
   const playerId = props.playerId
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isReady, setIsReady] = useState(false);
-
-  console.log("PS_data",data);
-  console.log("PS_data_quiz",data.quiz);
-
-  // const ready_url = data.quiz.data.attributes.get_ready.data.attributes.url
 
   const char_url = root_url.concat(data.quiz.data.attributes.characters.data[playerId-1].attributes.url);
   const char_anim_url = root_url.concat(data.quiz.data.attributes.characters_anim.data[playerId-1].attributes.url);
@@ -36,7 +32,6 @@ export default function PlayerStation(props) {
 
   return (
     <Fragment>
-
     <div className={classes.station}>
       <div className={classes.character}>
         {(gameState==="answerRecap" && props.correctShown && props.isAnswerCorrect) ?

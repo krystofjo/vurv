@@ -48,7 +48,8 @@ query GetData {
               question,
                answer,
                type,
-               explanation
+               explanation,
+               tolerance
               }
             }
           }
@@ -119,14 +120,6 @@ query GetData {
               id
               attributes {
                 formats
-                url
-              }
-            }
-          }
-          clouds {
-            data {
-              id
-              attributes {
                 url
               }
             }

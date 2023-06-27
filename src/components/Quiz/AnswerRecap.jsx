@@ -1,7 +1,7 @@
 import React, { useState, useContext, Fragment, useEffect } from 'react'
 import { QuizContext } from '../../helpers/Context';
 import Button from '../UI/Button';
-import classes from './Quiz.module.css';
+import classes from '../../pages/Quiz.module.css';
 import flipclasses from './FlipCard.module.css';
 import Stations from './Stations';
 
@@ -60,24 +60,26 @@ export default function AnswerRecap() {
       <div className={`${classes.main}`}>
         <Fragment>
           <div className={classes.card}>
-            <h5 style={{color: color}}>Správná odpověď:</h5>
-            <div className={classes.option} style={{color: color}}>{correctAnswer}</div>
-            <p>{explanation}</p>
-          </div>
+            <div className={classes.contentContainer}>
+              <div className={classes.content}>
+                <h5 style={{color: color}}>Správná odpověď:</h5>
+                <div className={classes.option} style={{color: color}}>{correctAnswer}</div>
+                <p>{explanation}</p>
+              </div>
+            </div>
+            <div className={classes.buttonContainer}>
             {(currQuestion.rank != questions.length - 1) &&
               <Button style={{backgroundColor: color, color: 'white'}} onClick={nextQuestion}>
-                <h5>
-                  Další Otázka
-                </h5>
+                <h5>Další Otázka</h5>
               </Button>
             }
             {(currQuestion.rank == questions.length - 1) &&
               <Button style={{backgroundColor: color, color: 'white'}} onClick={finishQuiz}>
-                <h5>
-                  Finish Quiz
-                </h5>
+                <h5>Dokončit</h5>
               </Button>
             }
+            </div>
+          </div>
         </Fragment>
       </div>
       <div className={classes.panel}>

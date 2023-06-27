@@ -4,7 +4,7 @@ import { AppContext, QuizContext } from "../../helpers/Context";
 import { useQuery, gql } from "@apollo/client";
 import Stations from "./Stations";
 import Button from "../UI/Button";
-import classes from "./Quiz.module.css";
+import classes from '../../pages/Quiz.module.css';
 
 export default function GetReady() {
   // const { id, players } = useParams();

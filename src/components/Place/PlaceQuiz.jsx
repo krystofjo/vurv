@@ -66,7 +66,7 @@ export default function PlaceQuiz(props) {
     <div className={classes.container}>
       <Line />
       <div className={classes.selectionContainer}>
-        <h4 style={{ color: color }}>Vyberte počet hráčů</h4>
+        <h5 style={{ color: color }}>Vyberte počet hráčů</h5>
         <div className={classes.players}>{chooseNumOfPlayers}</div>
         <div className={classes.buttonContainer}>
           <Button style={actionStyle} onClick={clickHandler}>
